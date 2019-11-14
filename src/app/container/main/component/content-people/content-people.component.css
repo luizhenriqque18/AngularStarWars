@@ -1,0 +1,29 @@
+.container{
+  position: relative;
+  display: flex;
+  align-items:stretch;
+  background: white;
+}
+
+aside{
+  display: flex;
+  background: red;
+  width: 40%;
+}
+
+.content {
+  background: blue;
+  padding: 10px;
+  width: 100%;
+}
+
+.filter-categoria{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.full-width{
+  width: 100%;
+}

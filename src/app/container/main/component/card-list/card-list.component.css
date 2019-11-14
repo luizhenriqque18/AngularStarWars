@@ -1,0 +1,10 @@
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.content-item{
+  display: flex;
+  padding: 5px;
+}

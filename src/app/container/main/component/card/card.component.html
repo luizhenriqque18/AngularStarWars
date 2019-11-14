@@ -1,0 +1,9 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ people.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions >
+    <app-dialog-detail [dataPeople]="people"></app-dialog-detail>
+  </mat-card-actions>
+</mat-card>

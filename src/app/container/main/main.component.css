@@ -1,0 +1,52 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  background: cornflowerblue;
+  height: 100%;
+}
+
+.content-body {
+  display: flex;
+  flex-direction: row;
+  background: green;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: cornflowerblue;
+  width: 70%;
+
+}
+
+aside{
+  width: 20%;
+  height: 100%;
+  background: red;
+}
+.filter-categoria{
+  padding: 10px;
+}
+
+footer{
+  text-align: center;
+  height: 10%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-margin{
+  margin: 2px;
+}
+
+.stretched-tabs {
+  width: 100%;
+}
+
+.mat-tab-label {
+  width: 50%;
+}

@@ -1,0 +1,17 @@
+<div class="container">
+  <header>
+    <h3>Star Wars</h3>
+  </header>
+  <div class="content-body">
+    <mat-tab-group mat-align-tabs="center" class="stretched-tabs" dynamicHeight="true" (selectedTabChange)="click($event)">
+      <mat-tab label="Personagem">
+        <app-content-people style="min-height: 100%"></app-content-people>
+      </mat-tab>
+      <mat-tab label="Filmes"> </mat-tab>
+      <mat-tab label="Planetas"></mat-tab>
+    </mat-tab-group>
+  </div>
+  <footer>
+    <p>Star Wars @ 2019</p>
+  </footer>
+</div>
