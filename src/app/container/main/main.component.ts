@@ -6,6 +6,8 @@ import {SwapiService} from '../../shared/swapi/swapi.service';
 import {debounceTime, map, tap} from 'rxjs/operators';
 import {MatRadioChange} from '@angular/material';
 import Cart from './model/cart';
+import {MainService} from './main.service';
+import {MatTabChangeEvent} from '@angular/material/typings/tabs';
 
 @Component({
   selector: 'app-main',
@@ -14,16 +16,20 @@ import Cart from './model/cart';
 })
 
 export class MainComponent implements OnInit {
-  private selected: string;
+  public selected: number;
 
-  constructor(private swapi: SwapiService) {}
+  constructor(private swapi: SwapiService,
+              private mainService: MainService) {}
 
 
   ngOnInit(): void {
-
+      this.mainService.tapIndex$.subscribe(resp => {
+        this.selected = resp;
+        console.log(this.selected);
+      });
   }
 
-  click(value) {
-    console.log(value);
+  tapChange(value: MatTabChangeEvent) {
+    this.mainService.tapIndex.next(value.index);
   }
 }

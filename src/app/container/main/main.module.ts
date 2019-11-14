@@ -10,6 +10,7 @@ import {ContentPeopleComponent} from './component/content-people/content-people.
 import {DialogContentPeopleComponent} from './component/dialog-content-people/dialog-content-people.component';
 import {DialogDetailComponent} from './component/dialog-detail/dialog-detail.component';
 import {CardFilmComponent} from './component/card-film/card-film.component';
+import {SearchComponent} from '../../shared/search/search.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {CardFilmComponent} from './component/card-film/card-film.component';
     CardListComponent,
     ContentPeopleComponent,
     CardFilmComponent,
+    SearchComponent,
     DialogDetailComponent,
     DialogContentPeopleComponent
   ],

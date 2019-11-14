@@ -1,11 +1,7 @@
 <div class="container">
   <aside>
     <div class="filter-categoria">
-      <form class="example-form">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Personagem" aria-label="Personagem" [formControl]="stateCtrl">
-        </mat-form-field>
-      </form>
+      <app-search [homePage]="homePage"></app-search>
       <mat-paginator [pageIndex]="pageEvent?.pageIndex "
                      [length]="length"
                      [pageSize]="pageSize"
@@ -14,7 +10,6 @@
       </mat-paginator>
     </div>
   </aside>
-
   <div class="content">
     <app-card-list [data]="states?.results || []" style="width: 100%; height: 100%"></app-card-list>
   </div>

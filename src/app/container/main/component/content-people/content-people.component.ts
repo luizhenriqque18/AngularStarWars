@@ -1,24 +1,22 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {SwapiService} from '../../../../shared/swapi/swapi.service';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
 import {PageEvent} from '@angular/material/paginator';
 import {PagesPeople, People} from '../../../../shared/swapi/model/swapi.models';
-import {isUndefined} from 'util';
+import {SearchService} from '../../../../shared/search/search.service';
+import {MainService} from '../../main.service';
 
 @Component({
   selector: 'app-content-people',
   templateUrl: './content-people.component.html',
   styleUrls: ['./content-people.component.css']
 })
-export class ContentPeopleComponent implements OnInit, AfterViewInit {
+export class ContentPeopleComponent implements OnInit{
 
-  constructor(private swapi: SwapiService) {}
+  constructor(private swapi: SwapiService,
+              public searchService: SearchService,
+              public mainService: MainService) {}
 
-  @Input() data: Array<People>;
-
-  stateCtrl = new FormControl();
+  public homePage = 'people';
   states: PagesPeople;
   // MatPaginator Inputs
   length = 0;
@@ -26,25 +24,29 @@ export class ContentPeopleComponent implements OnInit, AfterViewInit {
   pageSizeOptions: number[] = [10];
 
   // MatPaginator Output
-  pageEvent: PageEvent;
+  pageEvent: PageEvent = new  PageEvent();
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
+    console.log('ngOnInit');
+    this.searchService.search$.subscribe((resp) => {
+      if(this.mainService.getValue() == 0){
+        this.search(resp);
+        this.pageEvent.pageIndex = 0
+      }
+    })
+
     this.swapi.getPagePeoples().subscribe( resp => {
       this.states = resp;
       this.length = this.states.count;
     });
-  }
+    //this.stateCtrl.valueChanges.pipe(debounceTime(500)).subscribe((resp) => {
 
-  ngOnInit(): void {
-    this.stateCtrl.valueChanges.pipe(debounceTime(500)).subscribe((resp) => {
-      this.pageEvent.pageIndex = 0;
-      this.search(resp);
-    });
+    //});
   }
 
   nextOrPrevious(value?: PageEvent): PageEvent {
-    if (this.stateCtrl.value !== null) {
-      this.search(this.stateCtrl.value, value.pageIndex + 1 );
+    if (this.searchService.getValue() !== null) {
+      this.search(this.searchService.getValue(), value.pageIndex + 1 );
     } else {
       this.swapi.getPagePeoples(value.pageIndex + 1).subscribe( resp => {
         this.states = resp;
