@@ -5,9 +5,15 @@
   justify-content: space-between;
   width: 180px;
   height: auto;
+  margin:5px;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.content-item{
+  display: flex;
 }

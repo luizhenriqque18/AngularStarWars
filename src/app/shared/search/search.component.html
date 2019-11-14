@@ -1,5 +1,5 @@
 <form class="example-form">
   <mat-form-field class="full-width">
-    <input matInput placeholder="Personagem" aria-label="Personagem" [formControl]="stateCtrl">
+    <input matInput placeholder="Personagem" aria-label="Personagem" [value]="searchService.getValue()" [formControl]="stateCtrl">
   </mat-form-field>
 </form>

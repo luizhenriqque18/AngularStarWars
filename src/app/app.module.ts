@@ -8,7 +8,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from './container/main/material.module';
 import {MainModule} from './container/main/main.module';
-import { SearchComponent } from './shared/search/search.component';
 
 
 @NgModule({

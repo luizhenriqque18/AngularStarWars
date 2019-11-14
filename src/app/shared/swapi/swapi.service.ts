@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {People, Planet, Film, Species, Starship, Vehicle, PagesPeople} from './model/swapi.models';
+import {People, Planet, Film, Species, Starship, Vehicle, PagesPeople, PagesFilm} from './model/swapi.models';
 import {catchError} from 'rxjs/operators';
 
 const swapiUrl = 'https://swapi.co/api/';
@@ -39,12 +39,20 @@ export class SwapiService {
       params: new HttpParams().set('search', name)
     }).pipe( catchError(this.handleError<PagesPeople>('people')));
   }
+
+  /**
+   * Search films by title
+   */
+  getUrlPeople(url: string): Observable<People[]> {
+    return this.http.get<People[]>(`${url}`).
+    pipe( catchError(this.handleError<People[]>('people URL')));
+  }
   /**
    * Return list of films as observable
    */
-  getFilms(page?: number): Observable<Film[]> {
-    return this.http.get<Film[]>(`${swapiUrl}films/${page || ''}`).
-    pipe( catchError(this.handleError<Film[]>('films')));
+  getPageFilms(page?: number): Observable<PagesFilm> {
+    return this.http.get<PagesFilm>(`${swapiUrl}films/?page=${page || 1}`).
+    pipe( catchError(this.handleError<PagesFilm>('films')));
   }
   /**
    * Return film by id
@@ -56,10 +64,10 @@ export class SwapiService {
   /**
    * Search films by title
    */
-  searchFilms(title: string): Observable<Film[]> {
-    return this.http.get<Film[]>(`${swapiUrl}films/`, {
+  searchFilms(title: string, page?: number): Observable<PagesFilm> {
+    return this.http.get<PagesFilm>(`${swapiUrl}films/?page=${page || 1}`, {
       params: new HttpParams().set('search', title)
-    }).pipe( catchError(this.handleError<Film[]>('films')));
+    }).pipe( catchError(this.handleError<PagesFilm>('films')));
   }
   /**
    * Search films by title

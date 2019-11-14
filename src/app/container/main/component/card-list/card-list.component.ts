@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardListComponent implements OnInit {
 
   @Input() data: Array<any>;
+  @Input() typeDialogContet: string;
 
   constructor() { }
 

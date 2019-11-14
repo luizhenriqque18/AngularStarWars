@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {DialogContentPeopleComponent} from '../dialog-content-people/dialog-content-people.component';
 import {People} from '../../../../shared/swapi/model/swapi.models';
+import {DialogContentFilmComponent} from '../dialog-content-film/dialog-content-film.component';
 
 @Component({
   selector: 'app-dialog-detail',
@@ -10,14 +11,25 @@ import {People} from '../../../../shared/swapi/model/swapi.models';
 })
 export class DialogDetailComponent {
 
-  @Input() type: string;
-  @Input() dataPeople: People;
+  @Input() typeDialogContet: string;
+  @Input() dataList: People;
 
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogContentPeopleComponent, {
-      data: this.dataPeople,
+    let component: any;
+
+    switch (this.typeDialogContet) {
+      case 'people':
+        component = DialogContentPeopleComponent;
+        break;
+      case 'film':
+        component = DialogContentFilmComponent;
+        break;
+    }
+
+    const dialogRef = this.dialog.open(component, {
+      data: this.dataList,
       width: '1000px'
     });
 

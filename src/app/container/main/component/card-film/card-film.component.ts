@@ -11,6 +11,7 @@ export class CardFilmComponent implements OnInit {
   constructor() { }
 
   @Input() dataFilms: Film;
+  @Input() typeContent: string;
 
   ngOnInit() {
   }

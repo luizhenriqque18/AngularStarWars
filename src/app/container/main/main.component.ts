@@ -1,13 +1,10 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {People, Film, Planet} from '../../shared/swapi/model/swapi.models';
 import {SwapiService} from '../../shared/swapi/swapi.service';
-import {debounceTime, map, tap} from 'rxjs/operators';
-import {MatRadioChange} from '@angular/material';
-import Cart from './model/cart';
 import {MainService} from './main.service';
 import {MatTabChangeEvent} from '@angular/material/typings/tabs';
+import {Component, OnInit} from '@angular/core';
+import {SearchService} from '../../shared/search/search.service';
+import {valueReferenceToExpression} from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
+
 
 @Component({
   selector: 'app-main',
@@ -17,15 +14,16 @@ import {MatTabChangeEvent} from '@angular/material/typings/tabs';
 
 export class MainComponent implements OnInit {
   public selected: number;
+  private value: Array<{tab: number, value: string}> = [];
 
   constructor(private swapi: SwapiService,
-              private mainService: MainService) {}
+              private mainService: MainService,
+              private searchService: SearchService) {}
 
 
   ngOnInit(): void {
       this.mainService.tapIndex$.subscribe(resp => {
         this.selected = resp;
-        console.log(this.selected);
       });
   }
 

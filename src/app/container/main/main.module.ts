@@ -11,17 +11,23 @@ import {DialogContentPeopleComponent} from './component/dialog-content-people/di
 import {DialogDetailComponent} from './component/dialog-detail/dialog-detail.component';
 import {CardFilmComponent} from './component/card-film/card-film.component';
 import {SearchComponent} from '../../shared/search/search.component';
+import {ContentFilmComponent} from './component/content-film/content-film.component';
+import {DialogContentFilmComponent} from './component/dialog-content-film/dialog-content-film.component';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @NgModule({
   declarations: [
     MainComponent,
     CardComponent,
+    CardFilmComponent,
     CardListComponent,
+    ContentFilmComponent,
     ContentPeopleComponent,
     CardFilmComponent,
     SearchComponent,
     DialogDetailComponent,
-    DialogContentPeopleComponent
+    DialogContentPeopleComponent,
+    DialogContentFilmComponent
   ],
   imports: [
     CommonModule,
@@ -33,8 +39,14 @@ import {SearchComponent} from '../../shared/search/search.component';
     MaterialModule,
     MainComponent
   ],
-  providers: [SwapiService],
+  providers: [SwapiService,
+    { provide: MatDialogRef,
+      useValue: {}
+    }, {
+      provide: MAT_DIALOG_DATA,
+      useValue: {} // Add any data you wish to test if it is passed/used correctly
+    }],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  entryComponents: [DialogContentPeopleComponent]
+  entryComponents: [DialogContentPeopleComponent, DialogContentFilmComponent]
 })
 export class MainModule { }

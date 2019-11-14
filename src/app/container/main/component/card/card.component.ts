@@ -11,6 +11,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   @Input() people: People;
+  @Input() typeContent: string;
 
   ngOnInit() {
   }
