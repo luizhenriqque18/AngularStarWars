@@ -27,13 +27,12 @@ export class ContentPeopleComponent implements OnInit{
   pageEvent: PageEvent = new  PageEvent();
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.searchService.search$.subscribe((resp) => {
       if(this.mainService.getValue() == 0){
         this.search(resp);
         this.pageEvent.pageIndex = 0
       }
-    })
+    });
 
     this.swapi.getPagePeoples().subscribe( resp => {
       this.states = resp;
