@@ -1,14 +1,11 @@
 {
   "name": "angular-star-wars",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "node server.js",
     "ng": "ng",
     "serve": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {
