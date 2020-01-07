@@ -56,17 +56,8 @@
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
-import 'core-js/es6';
-import 'core-js/es7/reflect';
-require('zone.js/dist/zone');
 
-if(process.env.NODE_ENV === 'prduction' ){
-  //Produção e test
-}else {
-  //Desenvolvimento e test
-  Error['stackTraceLimit'] = Infinity;
-  require('zone.js/dist/long-stack-trace-zone');
-}
+
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
